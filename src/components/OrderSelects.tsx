@@ -32,8 +32,6 @@ const OrderSelects: React.FC = () => {
         }
     }, [token, dispatch]);
 
-    if (loading) return <CircularProgress className="mx-auto mt-6" />;
-
     const renderAutocomplete = (
         options: any[],
         value: any,
@@ -52,6 +50,7 @@ const OrderSelects: React.FC = () => {
                     {option[labelKey] || option.number}
                 </li>
             )}
+            loading={loading}
             renderInput={(params) => (
                 <TextField
                     {...params}
@@ -62,6 +61,7 @@ const OrderSelects: React.FC = () => {
                         ...params.InputProps,
                         endAdornment: (
                             <>
+                                {loading && <CircularProgress color="inherit" size={20} />}
                                 {params.InputProps?.endAdornment}
                             </>
                         ),
