@@ -8,7 +8,7 @@ import CreateSaleButton from "../components/CreateSaleButton.tsx";
 const HomePage = () => {
     return (
         <>
-            <div className="mx-4 mb-6">
+            <div className="mx-auto mx-4 mb-6">
                 <TokenInput/>
                 <Clients/>
                 <OrderSelects/>

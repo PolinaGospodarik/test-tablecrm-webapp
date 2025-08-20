@@ -63,7 +63,7 @@ export const createOrder = createAsyncThunk(
                 sales_manager: 0,
                 paid_rubles: 0,
                 paid_lt: 0,
-                status: status, // передаём true или false
+                status: status,
                 goods: nomenclature.map(item => ({
                     price_type: priceTypeId,
                     price: item.price,
