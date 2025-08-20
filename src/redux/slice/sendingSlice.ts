@@ -40,7 +40,7 @@ export const createOrder = createAsyncThunk(
 
         const body = [
             {
-                number: "ORD-" + Date.now(),
+                number: Date.now(),
                 dated: Math.floor(Date.now() / 1000),
                 operation: "Заказ",
                 client: clientId,

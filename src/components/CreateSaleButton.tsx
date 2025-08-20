@@ -5,7 +5,9 @@ import {
     Dialog,
     DialogContent,
     DialogActions,
-    Typography
+    Typography,
+    useMediaQuery,
+    useTheme
 } from "@mui/material";
 import { useAppSelector, useAppDispatch } from "../hooks";
 import { createOrder, type OrderNomenclatureItem } from "../redux/slice/sendingSlice";
@@ -23,6 +25,9 @@ const CreateSaleButtons: React.FC = () => {
 
     const [successDialogOpen, setSuccessDialogOpen] = useState(false);
     const [errorDialogOpen, setErrorDialogOpen] = useState(false);
+
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // true для мобильных
 
     const totalFields = 6;
     const filledFields =
@@ -74,17 +79,17 @@ const CreateSaleButtons: React.FC = () => {
                 className="h-2 rounded-full mb-3"
                 style={{ backgroundColor: "#e5e7eb" }}
             />
-            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+            <div className="flex flex-row gap-3 justify-center items-center">
                 <Button
                     variant="contained"
                     onClick={() => handleClick(false)}
-                    style={{
+                    sx={{
                         backgroundColor: "#1677ff",
                         color: "#fff",
                         textTransform: "none",
                         flex: 1,
                         padding: "10px 0",
-                        fontSize: "14px"
+                        fontSize: isMobile ? "12px" : "14px"
                     }}
                 >
                     Создать
@@ -92,13 +97,13 @@ const CreateSaleButtons: React.FC = () => {
                 <Button
                     variant="outlined"
                     onClick={() => handleClick(true)}
-                    style={{
+                    sx={{
                         borderColor: "#1677ff",
                         color: "#1677ff",
                         textTransform: "none",
                         flex: 1,
                         padding: "10px 0",
-                        fontSize: "14px"
+                        fontSize: isMobile ? "12px" : "14px"
                     }}
                 >
                     Создать и провести
